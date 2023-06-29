@@ -35,10 +35,17 @@ class NumbersFragment : Fragment() {
             }
         }
 
+        setAdapters()
+        setObservers()
+    }
+
+    private fun setAdapters() {
         adapter = NumberListAdapter(textToSpeech)
 
         binding.recyclerView.adapter = adapter
+    }
 
+    private fun setObservers() {
         viewModel.numbers.observe(viewLifecycleOwner) { numbers ->
             adapter.submitList(numbers)
         }
